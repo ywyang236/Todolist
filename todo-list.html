@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List App</title>
+    <link rel="shortcut icon" href="./wehelp.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/task-list-app.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header class="bg-light mb-3">
+        <div class="container">
+            <h1>Task List App</h1>
+            <p>Add/Delete a task, clear all tasks; utilize the LocalStorage API to persist task data.</p>
+        </div>
+    </header>
+    <!-- header end -->
+    <!-- section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mb-3">
+                        <div class="card-header">Add task</div>
+                        <!-- createTodoForm -->
+                        <form id="createTodoForm" class="card-body">
+                            <div class="mb-3">
+                                <label for="createTodoTitle" class="form-label">Task name:</label>
+                                <input id="createTodoTitle" value="TODO A" type="text" class="form-control"
+                                    placeholder="EX: Complete a work presentation." required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="createTodoColor" class="form-label">Color:</label>
+                                <select name="createTodoColor" id="createTodoColor" class="form-control" required>
+                                    <option value="primary">Blue</option>
+                                    <option value="danger">Red</option>
+                                    <option value="success">Green</option>
+                                    <option value="warning">Yellow</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success">📝 Create a Task</button>
+                            </div>
+                        </form>
+                        <!-- createTodoForm end -->
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-header">
+                            Task List
+                        </div>
+                        <!-- Bootstrap List Group 可參考 -->
+                        <!-- https://getbootstrap.com/docs/4.6/components/card/ -->
+                        <!-- todoList -->
+                        <ul id="todoList" class="list-group list-group-flush">
+                            <!-- list-group-item -->
+                            <li class="list-group-item">
+                                <div class="list-group-left">
+                                    <div class="todo-color-box bg-primary"></div>
+                                    <h5>Buy groceries for the week.
+                                        <br>
+                                        <span class="created-at">Created at 2023.02.20 17:15:24</span>
+                                    </h5>
+                                </div>
+                                <div class="list-group-right">
+                                    <button class="delete-btn" type="button">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <!-- list-group-item end -->
+                            <!-- list-group-item -->
+                            <li class="list-group-item">
+                                <div class="list-group-left">
+                                    <div class="todo-color-box bg-warning"></div>
+                                    <h5>Pay monthly bills.
+                                        <br>
+                                        <span class="created-at">Created at 2023.03.20 13:12:21</span>
+                                    </h5>
+                                </div>
+                                <div class="list-group-right">
+                                    <button class="delete-btn" type="button">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <!-- list-group-item end -->
+                            <!-- list-group-item -->
+                            <li class="list-group-item">
+                                <div class="list-group-left">
+                                    <div class="todo-color-box bg-success"></div>
+                                    <h5>Attend a yoga class.
+                                        <br>
+                                        <span class="created-at">Created at 2023.03.21 05:23:32</span>
+                                    </h5>
+                                </div>
+                                <div class="list-group-right">
+                                    <button class="delete-btn" type="button">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <!-- list-group-item end -->
+                            <!-- list-group-item -->
+                            <li class="list-group-item">
+                                <div class="list-group-left">
+                                    <div class="todo-color-box bg-danger"></div>
+                                    <h5>Schedule a dentist appointment.
+                                        <br>
+                                        <span class="created-at">Created at 2023.03.24 21:14:59</span>
+                                    </h5>
+                                </div>
+                                <div class="list-group-right">
+                                    <button class="delete-btn" type="button">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <!-- list-group-item end -->
+                        </ul>
+                        <!-- todoList end -->
+                        <div class="card-footer">
+                            <p class="mb-0">Here are <span id="todoListLength" class="font-weight-bold">4</span> tasks
+                                in the list.</p>
+                            <button id="clearTodoListBtn" class="btn btn-dark" type="button">
+                                🗑️ Clear all tasks
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end -->
+    <!-- footer -->
+    <footer class="text-center">
+        <p>Copyright &copy;2023 <a target="_blank" rel="noopener"
+                href="https://github.com/andy19910102/f2e-js-object-exercise">
+                Github Repository <i class="fa-brands fa-github-alt"></i></a> </p>
+    </footer>
+    <!-- footer end -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="./javascripts/task-list.js"></script>
+</body>
+
+</html>
